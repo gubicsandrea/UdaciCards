@@ -1,0 +1,3 @@
+export const white = "#fff";
+export const red = "#b71845";
+export const green = "#0f0";
