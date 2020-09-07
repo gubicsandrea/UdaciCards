@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { ScrollView, View, Text, StyleSheet } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity
+} from "react-native";
 import { connect } from "react-redux";
 import { getDecks } from "../utils/api";
 import { getAllDecks } from "../actions";
@@ -35,10 +41,16 @@ class DeckList extends Component {
         <ScrollView>
           {Object.keys(decks).map(key => (
             <View key={key} style={styles.deckContainer}>
-              <Text style={styles.titleText}>{key}</Text>
-              <Text style={styles.text}>
-                {decks[key].questions.length} cards
-              </Text>
+              <TouchableOpacity
+                onPress={() => {
+                  this.props.navigation.navigate("Deck", { title: key });
+                }}
+              >
+                <Text style={styles.titleText}>{key}</Text>
+                <Text style={styles.text}>
+                  {decks[key].questions.length} cards
+                </Text>
+              </TouchableOpacity>
             </View>
           ))}
         </ScrollView>

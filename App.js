@@ -4,12 +4,14 @@ import { View, Platform, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import decks from "./reducers";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import DeckList from "./components/DeckList";
 import AddDeck from "./components/AddDeck";
+import Deck from "./components/Deck";
 import { green, white } from "./utils/colors";
 
 const Tabs =
@@ -51,7 +53,7 @@ function TabNavigator(props) {
     <Tabs.Navigator tabBarOptions={tabBarOptions}>
       <Tabs.Screen
         name="DeckList"
-        component={DeckList}
+        component={StackNavigator}
         options={deckListOptions}
       />
       <Tabs.Screen
@@ -60,6 +62,34 @@ function TabNavigator(props) {
         options={addDeckOptions}
       />
     </Tabs.Navigator>
+  );
+}
+
+const Stack = createStackNavigator();
+
+const stackOptions = {
+  headerTintColor: white,
+  headerStyle: {
+    backgroundColor: green
+  }
+};
+
+function StackNavigator(props) {
+  return (
+    <Stack.Navigator navigatorOptions={stackOptions}>
+      <Stack.Screen
+        name="DeckList"
+        component={DeckList}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Deck"
+        component={Deck}
+        options={({ route }) => ({
+          title: route.params.title
+        })}
+      />
+    </Stack.Navigator>
   );
 }
 
