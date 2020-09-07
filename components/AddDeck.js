@@ -23,7 +23,7 @@ class AddDeck extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center" }}>
+      <View style={{ flex: 1 }}>
         <Text style={styles.text}>What is the title of your new deck?</Text>
         <TextInput
           onChangeText={title =>
@@ -40,6 +40,7 @@ class AddDeck extends Component {
           onPress={this.submitDeck}
           disabled={this.state.title === ""}
           color={purple}
+          style={{ margin: 10 }}
         />
       </View>
     );
@@ -54,10 +55,11 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   input: {
-    borderStyle: "solid",
+    borderWidth: 1,
     borderColor: purple,
     borderRadius: 5,
-    margin: 10
+    margin: 10,
+    padding: 10
   }
 });
 
