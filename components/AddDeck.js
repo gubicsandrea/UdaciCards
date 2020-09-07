@@ -1,14 +1,64 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { connect } from "react-redux";
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { addDeck } from "../actions";
+import { saveDeckTitle } from "../utils/api";
+import { purple, white } from "../utils/colors";
 
 class AddDeck extends Component {
+  state = {
+    title: ""
+  };
+
+  submitDeck = () => {
+    const { dispatch } = this.props;
+    const { title } = this.state;
+
+    saveDeckTitle(title);
+    dispatch(addDeck(title));
+    this.setState(() => ({
+      title: ""
+    }));
+  };
+
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <Text>Add deck</Text>
+      <View style={{ flex: 1, alignItems: "center" }}>
+        <Text style={styles.text}>What is the title of your new deck?</Text>
+        <TextInput
+          onChangeText={title =>
+            this.setState(() => ({
+              title
+            }))
+          }
+          value={this.state.title}
+          placeholder="Deck Title"
+          style={styles.input}
+        />
+        <Button
+          title="Submit new deck"
+          onPress={this.submitDeck}
+          disabled={this.state.title === ""}
+          color={purple}
+        />
       </View>
     );
   }
 }
 
-export default AddDeck;
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 24,
+    color: purple,
+    margin: 15,
+    textAlign: "center"
+  },
+  input: {
+    borderStyle: "solid",
+    borderColor: purple,
+    borderRadius: 5,
+    margin: 10
+  }
+});
+
+export default connect()(AddDeck);
