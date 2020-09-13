@@ -21,7 +21,12 @@ class Deck extends Component {
           >
             Add Card
           </TextButton>
-          <TextButton>Start Quiz</TextButton>
+          <TextButton
+            onPress={() => navigation.navigate("Quiz", { title: title })}
+            disabled={deck.questions.length === 0}
+          >
+            Start Quiz
+          </TextButton>
         </View>
       </View>
     );

@@ -13,6 +13,7 @@ import DeckList from "./components/DeckList";
 import AddDeck from "./components/AddDeck";
 import Deck from "./components/Deck";
 import AddCard from "./components/AddCard";
+import Quiz from "./components/Quiz";
 import { green, white } from "./utils/colors";
 
 const Tabs =
@@ -95,6 +96,13 @@ function StackNavigator(props) {
         component={AddCard}
         options={({ route }) => ({
           title: route.params.title
+        })}
+      />
+      <Stack.Screen
+        name="Quiz"
+        component={Quiz}
+        options={({ route }) => ({
+          title: "Quiz (" + route.params.title + ")"
         })}
       />
     </Stack.Navigator>
