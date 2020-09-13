@@ -4,6 +4,7 @@ import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { addDeck } from "../actions";
 import { saveDeckTitle } from "../utils/api";
 import { purple, white } from "../utils/colors";
+import TextButton from "./TextButton";
 
 class AddDeck extends Component {
   state = {
@@ -35,13 +36,12 @@ class AddDeck extends Component {
           placeholder="Deck Title"
           style={styles.input}
         />
-        <Button
-          title="Submit new deck"
+        <TextButton
           onPress={this.submitDeck}
           disabled={this.state.title === ""}
-          color={purple}
-          style={{ margin: 10 }}
-        />
+        >
+          Add Deck
+        </TextButton>
       </View>
     );
   }
