@@ -2,20 +2,15 @@ import { AsyncStorage } from "react-native";
 
 const UDACICARDS_STORAGE_KEY = "UdaciCards";
 
-function setDummyData() {
-  const dummyData = {
-    defaultDeck: {
-      title: "defaultDeck",
-      questions: []
-    }
-  };
-  AsyncStorage.setItem(UDACICARDS_STORAGE_KEY, JSON.stringify(dummyData));
-  return dummyData;
+function setEmptyData() {
+  const emptyData = {};
+  AsyncStorage.setItem(UDACICARDS_STORAGE_KEY, JSON.stringify(emptyData));
+  return emptyData;
 }
 
 export function getDecks() {
   return AsyncStorage.getItem(UDACICARDS_STORAGE_KEY).then(result => {
-    return result === null ? setDummyData() : JSON.parse(result);
+    return result === null ? setEmptyData() : JSON.parse(result);
   });
 }
 

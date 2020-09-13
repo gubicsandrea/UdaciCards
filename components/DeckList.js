@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { getDecks } from "../utils/api";
 import { getAllDecks } from "../actions";
 import { AppLoading } from "expo";
-import { purple, white } from "../utils/colors";
+import { purple, white, blue } from "../utils/colors";
 
 class DeckList extends Component {
   state = {
@@ -37,23 +37,27 @@ class DeckList extends Component {
       return <AppLoading />;
     }
     return (
-      <View style={{ flex: 1 }}>
-        <ScrollView>
-          {Object.keys(decks).map(key => (
-            <View key={key} style={styles.deckContainer}>
-              <TouchableOpacity
-                onPress={() => {
-                  this.props.navigation.navigate("Deck", { title: key });
-                }}
-              >
-                <Text style={styles.titleText}>{key}</Text>
-                <Text style={styles.text}>
-                  {decks[key].questions.length} cards
-                </Text>
-              </TouchableOpacity>
-            </View>
-          ))}
-        </ScrollView>
+      <View style={{ flex: 1, justifyContent: "center" }}>
+        {Object.keys(decks).length !== 0 ? (
+          <ScrollView style={{ flex: 1 }}>
+            {Object.keys(decks).map(key => (
+              <View key={key} style={styles.deckContainer}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.props.navigation.navigate("Deck", { title: key });
+                  }}
+                >
+                  <Text style={styles.titleText}>{key}</Text>
+                  <Text style={styles.text}>
+                    {decks[key].questions.length} cards
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            ))}
+          </ScrollView>
+        ) : (
+          <Text style={styles.noDeck}>You have no decks</Text>
+        )}
       </View>
     );
   }
@@ -78,6 +82,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: white,
     textAlign: "center"
+  },
+  noDeck: {
+    textAlign: "center",
+    color: blue,
+    fontSize: 24
   }
 });
 
