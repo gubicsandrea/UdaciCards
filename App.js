@@ -12,6 +12,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import DeckList from "./components/DeckList";
 import AddDeck from "./components/AddDeck";
 import Deck from "./components/Deck";
+import AddCard from "./components/AddCard";
 import { green, white } from "./utils/colors";
 
 const Tabs =
@@ -85,6 +86,13 @@ function StackNavigator(props) {
       <Stack.Screen
         name="Deck"
         component={Deck}
+        options={({ route }) => ({
+          title: route.params.title
+        })}
+      />
+      <Stack.Screen
+        name="Add Card"
+        component={AddCard}
         options={({ route }) => ({
           title: route.params.title
         })}

@@ -6,7 +6,7 @@ import { purple, white } from "../utils/colors";
 
 class Deck extends Component {
   render() {
-    const { title, deck } = this.props;
+    const { navigation, title, deck } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.cardDetails}>
@@ -17,6 +17,7 @@ class Deck extends Component {
           <TextButton
             buttonStyle={{ backgroundColor: white, borderColor: purple }}
             textStyle={{ color: purple }}
+            onPress={() => navigation.navigate("Add Card", { title: title })}
           >
             Add Card
           </TextButton>
