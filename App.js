@@ -53,7 +53,7 @@ function TabNavigator(props) {
     <Tabs.Navigator tabBarOptions={tabBarOptions}>
       <Tabs.Screen
         name="DeckList"
-        component={StackNavigator}
+        component={DeckList}
         options={deckListOptions}
       />
       <Tabs.Screen
@@ -78,8 +78,8 @@ function StackNavigator(props) {
   return (
     <Stack.Navigator navigatorOptions={stackOptions}>
       <Stack.Screen
-        name="DeckList"
-        component={DeckList}
+        name="Tabs"
+        component={TabNavigator}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -106,7 +106,7 @@ export default class App extends Component {
         <View style={{ flex: 1 }}>
           <StatusBar style="auto" />
           <NavigationContainer>
-            <TabNavigator />
+            <StackNavigator />
           </NavigationContainer>
         </View>
       </Provider>
