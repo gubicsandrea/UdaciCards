@@ -24,7 +24,7 @@ export function addDeck(title) {
   };
 }
 
-export function addCardToDeck(title, card) {
+export function addCard(title, card) {
   return {
     type: ADD_CARD_TO_DECK,
     title,
