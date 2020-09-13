@@ -71,11 +71,13 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 24,
-    color: white
+    color: white,
+    textAlign: "center"
   },
   text: {
     fontSize: 16,
-    color: white
+    color: white,
+    textAlign: "center"
   }
 });
 
