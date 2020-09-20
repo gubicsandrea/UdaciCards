@@ -97,6 +97,9 @@ class Quiz extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.question}>
+          <Text style={styles.paging}>
+            {index + 1}/{questions.length}
+          </Text>
           <Text style={styles.text}>{text}</Text>
           <TextButton
             onPress={this.toggleShowAnswer}
@@ -138,6 +141,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: blue,
     textAlign: "center"
+  },
+  paging: {
+    fontSize: 18,
+    color: blue
   }
 });
 
