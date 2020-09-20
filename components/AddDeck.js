@@ -12,11 +12,13 @@ class AddDeck extends Component {
   };
 
   submitDeck = () => {
-    const { dispatch } = this.props;
+    const { dispatch, navigation } = this.props;
     const { title } = this.state;
 
     saveDeckTitle(title);
     dispatch(addDeck(title));
+    navigation.navigate("Deck", { title });
+
     this.setState(() => ({
       title: ""
     }));
@@ -40,7 +42,7 @@ class AddDeck extends Component {
           onPress={this.submitDeck}
           disabled={this.state.title === ""}
         >
-          Add Deck
+          Create Deck
         </TextButton>
       </View>
     );

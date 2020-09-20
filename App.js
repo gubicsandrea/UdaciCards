@@ -52,7 +52,7 @@ const addDeckOptions = {
 
 function TabNavigator(props) {
   return (
-    <Tabs.Navigator tabBarOptions={tabBarOptions}>
+    <Tabs.Navigator tabBarOptions={tabBarOptions} initialRouteName={DeckList}>
       <Tabs.Screen
         name="DeckList"
         component={DeckList}
@@ -78,7 +78,7 @@ const stackOptions = {
 
 function StackNavigator(props) {
   return (
-    <Stack.Navigator navigatorOptions={stackOptions}>
+    <Stack.Navigator navigatorOptions={stackOptions} initialRouteName={Tabs}>
       <Stack.Screen
         name="Tabs"
         component={TabNavigator}

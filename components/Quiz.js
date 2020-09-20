@@ -48,13 +48,37 @@ class Quiz extends Component {
     }
   };
 
+  restart = () => {
+    this.setState({
+      index: 0,
+      showAnswer: false,
+      buttonText: "Answer",
+      points: 0,
+      finished: false
+    });
+  };
+
   render() {
-    const { title, questions } = this.props;
+    const { title, questions, navigation } = this.props;
     const { index, showAnswer, buttonText, points, finished } = this.state;
 
     if (finished) {
       return (
-        <Result title={title} points={points} maxPoints={questions.length} />
+        <View style={styles.container}>
+          <View style={styles.question}>
+            <Result
+              title={title}
+              points={points}
+              maxPoints={questions.length}
+            />
+          </View>
+          <View>
+            <TextButton onPress={this.restart}>Restart Quiz</TextButton>
+            <TextButton onPress={() => navigation.navigate("Deck", { title })}>
+              Back to Deck
+            </TextButton>
+          </View>
+        </View>
       );
     }
 
