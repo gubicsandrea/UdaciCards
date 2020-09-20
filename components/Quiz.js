@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 import TextButton from "./TextButton";
 import Result from "./Result";
 import { red, green, white, blue } from "../utils/colors";
+import { clearLocalNotification, setLocalNotification } from "../utils/helpers";
 
 class Quiz extends Component {
   state = {
@@ -57,6 +58,14 @@ class Quiz extends Component {
       finished: false
     });
   };
+
+  conponentDidMount() {
+    clearLocalNotification().then(() => {
+      let date = new Date();
+      date.setDate(date.getDate + 1);
+      setLocalNotification(date);
+    });
+  }
 
   render() {
     const { title, questions, navigation } = this.props;

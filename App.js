@@ -15,6 +15,7 @@ import Deck from "./components/Deck";
 import AddCard from "./components/AddCard";
 import Quiz from "./components/Quiz";
 import { green, white } from "./utils/colors";
+import { setLocalNotification } from "./utils/helpers";
 
 const Tabs =
   Platform.IO === "ios"
@@ -114,6 +115,7 @@ export default class App extends Component {
     console.log("before");
     debugger;
     console.log("after");
+    setLocalNotification(new Date());
   }
 
   render() {
