@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet } from "react-native";
 import { addDeck } from "../actions";
 import { saveDeckTitle } from "../utils/api";
-import { purple, white } from "../utils/colors";
+import { purple } from "../utils/colors";
 import TextButton from "./TextButton";
 
 class AddDeck extends Component {
